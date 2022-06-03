@@ -19,14 +19,15 @@ path = "src/main.rs"
 name = "zero2prod"
 
 [dependencies]
-config = "0.11"
-actix-web = "4"
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+actix-web = "4.0.1"
+chrono = "0.4.19"
+config = "0.11.0"
+secrecy = {version = "0.8.0", features = ["serde"] }
 # We need the optional `derive` feature to use `serde`'s procedural macros:
 # `#[derive(Serialize)]` and `#[derive(Deserialize)]`.
 # The feature is not enabled by default to avoid pulling in
 # unnecessary dependencies for projects that do not need it.
-serde = { version = "1", features = ["derive"]}
+serde = { version = "1.0.137", features = ["derive"]}
 # • runtime-actix-rustls rells sqlx to use the actix runtime for its futures and rustls
 #   as TLS backend;
 # • macros gives us access to sqlx::query! and sqlx::query_as!, which we will be using
@@ -39,10 +40,17 @@ serde = { version = "1", features = ["derive"]}
 # • migrate gives us access to the same functions used under the hood by sqlx-cli to
 #   manage migrations. It will turn out to be useful for our test suite.
 sqlx = { version = "0.5.13", default-features = false, features = ["runtime-actix-rustls", "macros", "postgres", "uuid", "chrono", "migrate"] }
+tokio = { version = "1.18.2", features = ["macros", "rt-multi-thread"] }
+tracing = { version = "0.1.34", features = ["log"] }
+tracing-actix-web = "0.5.1"
+tracing-bunyan-formatter = "0.3.2"
+tracing-log = "0.1.3"
+tracing-subscriber = { version = "0.3.11", features = ["registry", "env-filter"] }
 uuid = { version = "0.8.2", features = ["v4"] }
-chrono = "0.4.19"
 
 # Dev dependencies are used exclusively when or examples
 # They do not get included in the final application binary!
 [dev-dependencies]
-reqwest = "0.11"
+# once_cell covers both std::sync::Once & std::sync::SyncOnceCell (experimental) usecases
+once_cell = "1.12.0"
+reqwest = "0.11.10"
