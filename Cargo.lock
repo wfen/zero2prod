@@ -165,7 +165,7 @@ dependencies = [
  "serde_urlencoded",
  "smallvec",
  "socket2",
- "time 0.3.9",
+ "time",
  "url",
 ]
 
@@ -345,7 +345,6 @@ dependencies = [
  "libc",
  "num-integer",
  "num-traits 0.2.15",
- "time 0.1.43",
  "winapi",
 ]
 
@@ -378,7 +377,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94d4706de1b0fa5b132270cddffa8585166037822e260a944fe161acd137ca05"
 dependencies = [
  "percent-encoding",
- "time 0.3.9",
+ "time",
  "version_check",
 ]
 
@@ -516,6 +515,9 @@ name = "either"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e78d4f1cc4ae33bbfc157ed5d5a5ef3bc29227303d595861deb238fcec4e9457"
+dependencies = [
+ "serde 1.0.137",
+]
 
 [[package]]
 name = "encoding_rs"
@@ -1736,9 +1738,12 @@ dependencies = [
  "dotenv",
  "either",
  "heck",
+ "hex",
  "once_cell",
  "proc-macro2",
  "quote",
+ "serde 1.0.137",
+ "serde_json",
  "sha2",
  "sqlx-core",
  "sqlx-rt",
@@ -1832,16 +1837,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5516c27b78311c50bf42c071425c560ac799b11c30b31f87e3081965fe5e0180"
 dependencies = [
  "once_cell",
-]
-
-[[package]]
-name = "time"
-version = "0.1.43"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ca8a50ef2360fbd1eeb0ecd46795a87a19024eb4b53c5dc916ca1fd95fe62438"
-dependencies = [
- "libc",
- "winapi",
 ]
 
 [[package]]
@@ -2016,7 +2011,7 @@ dependencies = [
  "log",
  "serde 1.0.137",
  "serde_json",
- "time 0.3.9",
+ "time",
  "tracing",
  "tracing-core",
  "tracing-log",
@@ -2377,7 +2372,6 @@ name = "zero2prod"
 version = "0.1.0"
 dependencies = [
  "actix-web",
- "chrono",
  "config",
  "once_cell",
  "reqwest",

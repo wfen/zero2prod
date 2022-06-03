@@ -20,7 +20,6 @@ name = "zero2prod"
 
 [dependencies]
 actix-web = "4.0.1"
-chrono = "0.4.19"
 config = "0.11.0"
 secrecy = {version = "0.8.0", features = ["serde"] }
 # We need the optional `derive` feature to use `serde`'s procedural macros:
@@ -39,7 +38,7 @@ serde = { version = "1.0.137", features = ["derive"]}
 #   chrono crate. We need it to work with our subscribed_at column;
 # • migrate gives us access to the same functions used under the hood by sqlx-cli to
 #   manage migrations. It will turn out to be useful for our test suite.
-sqlx = { version = "0.5.13", default-features = false, features = ["runtime-actix-rustls", "macros", "postgres", "uuid", "chrono", "migrate"] }
+sqlx = { version = "0.5.13", default-features = false, features = ["runtime-actix-rustls", "macros", "postgres", "uuid", "chrono", "migrate", "offline"] }
 tokio = { version = "1.18.2", features = ["macros", "rt-multi-thread"] }
 tracing = { version = "0.1.34", features = ["log"] }
 tracing-actix-web = "0.5.1"

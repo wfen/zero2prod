@@ -1,7 +1,6 @@
 //! src/routes/subscriptions.rs
 
 use actix_web::{web, HttpResponse};
-use chrono::Utc;
 use sqlx::PgPool;
 use uuid::Uuid;
 
@@ -36,13 +35,12 @@ pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> Ht
 pub async fn insert_subscriber(pool: &PgPool, form: &FormData) -> Result<(), sqlx::Error> {
     sqlx::query!(
         r#"
-    INSERT INTO subscriptions (id, email, name, subscribed_at)
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO subscriptions (id, email, name)
+    VALUES ($1, $2, $3)
             "#,
         Uuid::new_v4(),
         form.email,
         form.name,
-        Utc::now(),
     )
     .execute(pool)
     .await
