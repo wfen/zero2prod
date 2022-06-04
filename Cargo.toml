@@ -38,6 +38,7 @@ serde = { version = "1.0.137", features = ["derive"]}
 #   chrono crate. We need it to work with our subscribed_at column;
 # • migrate gives us access to the same functions used under the hood by sqlx-cli to
 #   manage migrations. It will turn out to be useful for our test suite.
+serde-aux = { version = "3.0.1", default-features = false, features = [] }
 sqlx = { version = "0.5.13", default-features = false, features = ["runtime-actix-rustls", "macros", "postgres", "uuid", "chrono", "migrate", "offline"] }
 tokio = { version = "1.18.2", features = ["macros", "rt-multi-thread"] }
 tracing = { version = "0.1.34", features = ["log"] }

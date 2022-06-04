@@ -1,0 +1,7 @@
+#! configuration/production.yaml
+
+application:
+  host: 0.0.0.0
+database:
+  # require_ssl false when running locally or testing, but true in production
+  require_ssl: true
